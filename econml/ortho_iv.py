@@ -910,7 +910,7 @@ class _BaseDRIV(_OrthoLearner):
         self: _BaseDRIV instance
         """
         # Replacing fit from _OrthoLearner, to enforce W=None and improve the docstring
-        return super().fit(Y, T, X=X, W=None, Z=Z,
+        return super().fit(Y, T, X=X, Z=Z,
                            sample_weight=sample_weight, sample_var=sample_var, inference=inference)
 
     @property

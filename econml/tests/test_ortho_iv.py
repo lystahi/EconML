@@ -94,11 +94,7 @@ class TestDML(unittest.TestCase):
                                 model_t = LogisticRegression() if discrete_t else Lasso()
                                 model_z = LogisticRegression() if discrete_z else Lasso()
 
-                                # TODO: add stratification to bootstrap so that we can use it
-                                # even with discrete treatments
-                                all_infs = [None]
-                                if not (discrete_t or discrete_z):
-                                    all_infs.append(BootstrapInference(1))
+                                all_infs = [None, BootstrapInference(1)]
 
                                 estimators = [(DMLATEIV(model_Y_X=Lasso(),
                                                         model_T_X=model_t,
