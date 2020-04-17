@@ -148,6 +148,12 @@ class TestDML(unittest.TestCase):
                                             np.testing.assert_array_equal(
                                                 marg_eff if d_x else marg_eff[0:1], const_marg_eff)
 
+                                            assert isinstance(est.score_, float)
+                                            for score in est.nuisance_scores_y:
+                                                assert isinstance(score, float)
+                                            for score in est.nuisance_scores_t:
+                                                assert isinstance(score, float)
+
                                             T0 = np.full_like(T, 'a') if is_discrete else np.zeros_like(T)
                                             eff = est.effect(X, T0=T0, T1=T)
                                             self.assertEqual(shape(eff), effect_shape)
